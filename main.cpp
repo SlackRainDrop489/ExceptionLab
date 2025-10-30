@@ -106,7 +106,7 @@ int main() {
 		}
 		catch (const ParseException &e) {
 			cout << e.what() << endl;
-			lineNumber++;
+			getline(file, shapeType);
 		}
 	}
 
