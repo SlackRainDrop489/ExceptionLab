@@ -44,6 +44,7 @@ void openFileForReading(std::ifstream &file, std::string initialFilename) {
 			cerr << "Error: Failed to open alternative file. Exiting." << endl;
 			// In a real program, you might throw a PersistentFileError here,
 			// but for this lab, we will just exit.
+			throw FileOpenException(e.what());
 			exit(1); // Exit the program with an error code
 		}
 		cout << "Alternative file opened successfully: " << alternativeFilename << endl;
