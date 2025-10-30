@@ -10,3 +10,10 @@ add_executable(ErrorHandling main.cpp
         GeometryUtils.h
         Exceptions.cpp
         Exceptions.h)
+
+
+configure_file(
+        "${CMAKE_CURRENT_SOURCE_DIR}/data.txt"
+        "${CMAKE_CURRENT_BINARY_DIR}/data.txt"
+        COPYONLY
+)
