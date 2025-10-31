@@ -5,8 +5,8 @@
  * @file FileUtils.cpp
  * @brief Implements utility functions for handling file operations.
  *
- * @author [Your Name Here]
- * @date [Current Date]
+ * @author Quinn Alvine
+ * @date 10/31/25
  * @version 1.0
  */
 
