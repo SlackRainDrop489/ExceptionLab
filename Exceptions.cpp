@@ -12,6 +12,7 @@
 
 #include "Exceptions.h"
 
+
 /**
  * @brief Returns the error message for FileOpenException.
  */

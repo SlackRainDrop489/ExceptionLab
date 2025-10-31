@@ -31,8 +31,12 @@ void openFileForReading(std::ifstream &file, std::string initialFilename) {
 	// try...catch block that throws and catches a FileOpenException.
 	try {
 		file.open(initialFilename);
+		if (!file.is_open()) {
+			throw FileOpenException("File could not be opened: " + initialFilename);
+		}
+		cout << "File opened successfully: " << initialFilename << endl;
 	} catch (const FileOpenException &e) {
-		cerr << "Error: File could not be opened: " << initialFilename << endl;
+		cout << e.what() << endl;
 
 		// This logic should be inside your 'catch' block
 		string alternativeFilename;
@@ -44,10 +48,8 @@ void openFileForReading(std::ifstream &file, std::string initialFilename) {
 			cerr << "Error: Failed to open alternative file. Exiting." << endl;
 			// In a real program, you might throw a PersistentFileError here,
 			// but for this lab, we will just exit.
-			throw FileOpenException(e.what());
 			exit(1); // Exit the program with an error code
 		}
 		cout << "Alternative file opened successfully: " << alternativeFilename << endl;
 	}
-	cout << "File opened successfully: " << initialFilename << endl;
 }
