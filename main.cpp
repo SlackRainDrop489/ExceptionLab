@@ -59,9 +59,9 @@ int main() {
 	// that catches a ParseException.
 
 	// Read from the file one "word" at a time
-	while (file >> shapeType) {
-		lineNumber++;
-		try {
+	try {
+		while (file >> shapeType) {
+			lineNumber++;
 			if (shapeType == "square") {
 				double side;
 				file >> side;
@@ -104,10 +104,9 @@ int main() {
 				//cerr << "Line " << lineNumber << ": Error: Unknown shape type: " << shapeType << endl;
 			}
 		}
-		catch (const ParseException &e) {
-			cout << e.what() << endl;
-			getline(file, shapeType);
-		}
+	}
+	catch (ParseException &e) {
+		cout << "Error: " << e.what() << endl;
 	}
 
 	// The catch block for ParseException should go here.
