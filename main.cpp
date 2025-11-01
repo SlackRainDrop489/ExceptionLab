@@ -62,6 +62,7 @@ int main() {
 		while (file >> shapeType) {
 			try {
 				lineNumber++;
+				string messageTemp = "Invalid Line " + to_string(lineNumber) + ": ";
 				if (shapeType == "square") {
 					double side;
 					file >> side;
@@ -72,7 +73,7 @@ int main() {
 						double area = calculateArea(side); // Call library function
 						cout << "Line " << lineNumber << ": Square Area: " << area << endl;
 					} catch (const std::invalid_argument &e) {
-						cout << "Invalid Line: " << e.what() << endl;
+						cerr << messageTemp << e.what() << endl;
 					}
 				} else if (shapeType == "rectangle") {
 					double length, width;
@@ -84,7 +85,7 @@ int main() {
 						double area = calculateArea(length, width); // Call overloaded library function
 						cout << "Line " << lineNumber << ": Rectangle Area: " << area << endl;
 					} catch (const std::invalid_argument &e) {
-						cout << "Invalid Line: " << e.what() << endl;
+						cerr << messageTemp << e.what() << endl;
 					}
 				} else if (shapeType == "circle") {
 					double radius;
@@ -96,17 +97,21 @@ int main() {
 						double area = calculateCircleArea(radius); // Call library function
 						cout << "Line " << lineNumber << ": Circle Area: " << area << endl;
 					} catch (const std::invalid_argument &e) {
-						cout << "Invalid Line: " << e.what() << endl;
+						cerr << messageTemp << e.what() << endl;
 					}
 				} else {
 					// STUDENT TODO: Replace this 'cerr' statement with a
-					throw ParseException("Unknown shape type: " + shapeType);
+					throw ParseException(messageTemp + "Unknown shape type: " + shapeType);
 					//cerr << "Line " << lineNumber << ": Error: Unknown shape type: " << shapeType << endl;
 				}
 			}
 			catch (const ParseException &e) {
-				cout << e.what() << endl;
+				cerr << e.what() << endl;
 				getline(file, shapeType);
+				shapeType = "unknown";
+			}
+			catch (const std::invalid_argument &e) {
+				cerr << "Line " << lineNumber << ": Unexpected error: " << e.what() << endl;
 			}
 		}
 

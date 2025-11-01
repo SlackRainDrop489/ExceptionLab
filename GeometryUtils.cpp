@@ -31,7 +31,7 @@ double calculateArea(double side) {
     if (side <= 0) {
         //cerr << "Error: Invalid side for square: " << side << endl;
         throw invalid_argument("Side cannot be zero or negative: " + to_string(side));
-        return 0; // Return 0 on error for now
+        //return 0; // Return 0 on error for now
     }
 
     return side * side;
@@ -47,7 +47,7 @@ double calculateArea(double length, double width) {
         //cerr << "Error: Invalid dimensions for rectangle: "
         //     << length << ", " << width << endl;
         throw invalid_argument("Invalid dimensions for rectangle: " + to_string(length) + ", " + to_string(width));
-        return 0; // Return 0 on error for now
+        //return 0; // Return 0 on error for now
     }
 
     return length * width;
@@ -62,7 +62,7 @@ double calculateCircleArea(double radius) {
     if (radius <= 0) {
         //cerr << "Error: Invalid radius for circle: " << radius << endl;
         throw invalid_argument("Invalid radius for circle: " + to_string(radius));
-        return 0; // Return 0 on error for now
+        //return 0; // Return 0 on error for now
     }
 
     const double PI = 3.1415926535; // A more precise PI
