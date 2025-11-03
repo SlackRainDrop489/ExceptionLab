@@ -9,8 +9,8 @@
  * of squares, rectangles, and circles. It is responsible for
  * validating input and throwing exceptions on invalid data.
  *
- * @author [Your Name Here]
- * @date [Current Date]
+ * @author Quinn Alvine
+ * @date 10/31/25
  * @version 1.0
  */
 
