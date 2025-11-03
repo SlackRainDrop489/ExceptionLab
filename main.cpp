@@ -60,7 +60,7 @@ int main() {
 
 	// Read from the file one "word" at a time
 		while (file >> shapeType) {
-			try {
+			try { // This is the main try that will control the stuff inside of the while loop
 				lineNumber++;
 				string messageTemp = "Invalid Line " + to_string(lineNumber) + ": ";
 				if (shapeType == "square") {
@@ -105,12 +105,12 @@ int main() {
 					//cerr << "Line " << lineNumber << ": Error: Unknown shape type: " << shapeType << endl;
 				}
 			}
-			catch (const ParseException &e) {
-				cerr << e.what() << endl;
-				getline(file, shapeType);
-				shapeType = "unknown";
+			catch (const ParseException &e) { // This will catch if the thrown error is a ParseException
+				cerr << e.what() << endl; // This will print out the error
+				getline(file, shapeType); // This will get the line that the program is currently looking at so that it does not go through each word because we already know that this line does not work
+				shapeType = "unknown"; // This will set the shapeType to unknown just for safety
 			}
-			catch (const std::invalid_argument &e) {
+			catch (const std::invalid_argument &e) { // This will check to see if there are any other invalid_arguments
 				cerr << "Line " << lineNumber << ": Unexpected error: " << e.what() << endl;
 			}
 		}

@@ -18,7 +18,7 @@
  */
 const char* FileOpenException::what() const noexcept {
     // .c_str() returns a const char* representation of the std::string
-    return msg.c_str();
+    return msg.c_str(); // This was already like this
 }
 
 /**
@@ -26,6 +26,6 @@ const char* FileOpenException::what() const noexcept {
  */
 const char* ParseException::what() const noexcept {
     // .c_str() returns a const char* representation of the std::string
-    return msg.c_str();
+    return msg.c_str(); // This was already like this
 }
 

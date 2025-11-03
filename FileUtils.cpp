@@ -30,25 +30,25 @@ void openFileForReading(std::ifstream &file, std::string initialFilename) {
 	// STUDENT TODO: Replace the following 'if' block with a
 	// try...catch block that throws and catches a FileOpenException.
 	try {
-		file.open(initialFilename);
-		if (!file.is_open()) {
-			throw FileOpenException("File could not be opened: " + initialFilename);
+		file.open(initialFilename); // This will try to open the file sent in in the begining
+		if (!file.is_open()) { // This will look to see if the file was not opened
+			throw FileOpenException("File could not be opened: " + initialFilename); // If the file was not opened then it will throw a FileOperException
 		}
 		cout << "File opened successfully: " << initialFilename << endl;
-	} catch (const FileOpenException &e) {
-		cout << e.what() << endl;
+	} catch (const FileOpenException &e) { // This will catch the FileOpenException and run this code
+		cout << e.what() << endl; // This will print out the error
 
 		// This logic should be inside your 'catch' block
 		string alternativeFilename;
-		cout << "Enter alternative filename: ";
+		cout << "Enter alternative filename: "; // This will ask for another file
 		cin >> alternativeFilename;
-		file.open(alternativeFilename);
+		file.open(alternativeFilename); // This will again try and open a new file
 
-		if (!file.is_open()) {
-			cerr << "Error: Failed to open alternative file. Exiting." << endl;
+		if (!file.is_open()) { // This will check to see if the file failed to open
+			cerr << "Error: Failed to open alternative file. Exiting." << endl; // If it did it will print out an error
 			// In a real program, you might throw a PersistentFileError here,
 			// but for this lab, we will just exit.
-			exit(1); // Exit the program with an error code
+			exit(1); // Then the program will exit
 		}
 		cout << "Alternative file opened successfully: " << alternativeFilename << endl;
 	}
